@@ -15,11 +15,11 @@
     <div id="left">
       <h4>Użytkownicy</h4>
       <?php
-      $conn=mysqli_connect('localhost','root','','dane4');
-      $res1=mysqli_query($conn,'SELECT id,imie,nazwisko,rok_urodzenia,zdjecie FROM `osoby` LIMIT 30');
-      foreach($res1 as $row){
-      $wiek=2023-$row['rok_urodzenia'];
-      echo $row['id'].'&nbsp'.$row['imie'].'&nbsp'.$row['nazwisko'].'&nbsp'.$wiek.' lat'.'<br>';
+      $conn = mysqli_connect('localhost', 'root', '', 'dane4');
+      $res1 = mysqli_query($conn, 'SELECT id,imie,nazwisko,rok_urodzenia,zdjecie FROM `osoby` LIMIT 30');
+      foreach ($res1 as $row) {
+        $wiek = 2023 - $row['rok_urodzenia'];
+        echo $row['id'] . '&nbsp' . $row['imie'] . '&nbsp' . $row['nazwisko'] . '&nbsp' . $wiek . ' lat' . '<br>';
       }
       ?>
       <a href="settings.html">Inne ustawienia</a>
@@ -32,16 +32,16 @@
       </form>
       <hr>
       <?php
-      if(isset($_POST['id'])){
-        $id=$_POST['id'];
-      $res2=mysqli_query($conn,"SELECT osoby.id,imie,nazwisko,rok_urodzenia,zdjecie,opis,hobby.nazwa FROM `osoby` inner join hobby on Hobby_id=hobby.id where osoby.id=$id;");
-      foreach($res2 as $row2){
-      echo "<h2>".$id.'&nbsp'.$row2['imie'].'&nbsp'.$row['nazwisko'].'&nbsp'."</h2>";
-      echo "<img src='".$row2['zdjecie']."' alt='".$id."'>";
-      echo "<p> Rok urodzenia: ".$row2['rok_urodzenia']."</p>";
-      echo "<p> Opis: ".$row2['opis']."</p>";
-      echo "<p> Hobby: ".$row2['nazwa']."</p>";
-      }
+      if (isset($_POST['id'])) {
+        $id = $_POST['id'];
+        $res2 = mysqli_query($conn, "SELECT osoby.id,osoby.imie,osoby.nazwisko,rok_urodzenia,zdjecie,opis,hobby.nazwa FROM `osoby` inner join hobby on Hobby_id=hobby.id where osoby.id=$id;");
+        foreach ($res2 as $row2) {
+          echo "<h2>" . $id . '&nbsp' . $row2['imie'] . '&nbsp' . $row2['nazwisko'] . '&nbsp' . "</h2>";
+          echo "<img src='" . $row2['zdjecie'] . "' alt='" . $id . "'>";
+          echo "<p> Rok urodzenia: " . $row2['rok_urodzenia'] . "</p>";
+          echo "<p> Opis: " . $row2['opis'] . "</p>";
+          echo "<p> Hobby: " . $row2['nazwa'] . "</p>";
+        }
       }
       ?>
     </div>
