@@ -1,0 +1,4 @@
+Kwerenda 1: SELECT id,imie,nazwisko,rok_urodzenia,zdjecie FROM `osoby` LIMIT 30
+Kwerenda 2: SELECT osoby.id,imie,nazwisko,rok_urodzenia,zdjecie,opis,hobby.nazwa FROM `osoby` inner join hobby on Hobby_id=hobby.id where osoby.id=10;
+Kwerenda 3: SELECT AVG(rok_urodzenia),MIN(rok_urodzenia),MAX(rok_urodzenia) FROM `osoby`;
+Kwerenda 4: UPDATE osoby SET opis='Spanie' WHERE Hobby_id=4;
